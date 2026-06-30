@@ -9,21 +9,47 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SignupRouteImport } from './routes/signup'
-import { Route as LoginRouteImport } from './routes/login'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as DashboardSkillGapRouteImport } from './routes/dashboard.skill-gap'
+import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
+import { Route as DashboardSavedJobsRouteImport } from './routes/dashboard.saved-jobs'
+import { Route as DashboardRoadmapRouteImport } from './routes/dashboard.roadmap'
+import { Route as DashboardResumeRouteImport } from './routes/dashboard.resume'
+import { Route as DashboardRecommendationsRouteImport } from './routes/dashboard.recommendations'
+import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
+import { Route as DashboardNotificationsRouteImport } from './routes/dashboard.notifications'
+import { Route as DashboardJobsRouteImport } from './routes/dashboard.jobs'
+import { Route as DashboardInterviewRouteImport } from './routes/dashboard.interview'
+import { Route as DashboardInternshipsRouteImport } from './routes/dashboard.internships'
+import { Route as DashboardDiscoverRouteImport } from './routes/dashboard.discover'
+import { Route as DashboardChatbotRouteImport } from './routes/dashboard.chatbot'
+import { Route as DashboardCertificationsRouteImport } from './routes/dashboard.certifications'
+import { Route as DashboardApplicationsRouteImport } from './routes/dashboard.applications'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminSkillsRouteImport } from './routes/admin.skills'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminResumesRouteImport } from './routes/admin.resumes'
+import { Route as AdminReportsRouteImport } from './routes/admin.reports'
+import { Route as AdminProfileRouteImport } from './routes/admin.profile'
+import { Route as AdminNotificationsRouteImport } from './routes/admin.notifications'
+import { Route as AdminJobsRouteImport } from './routes/admin.jobs'
+import { Route as AdminInterviewsRouteImport } from './routes/admin.interviews'
+import { Route as AdminInternshipsRouteImport } from './routes/admin.internships'
+import { Route as AdminEmployersRouteImport } from './routes/admin.employers'
+import { Route as AdminCertificationsRouteImport } from './routes/admin.certifications'
+import { Route as AdminApplicationsRouteImport } from './routes/admin.applications'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 
-const SignupRoute = SignupRouteImport.update({
-  id: '/signup',
-  path: '/signup',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -36,6 +62,16 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -46,74 +82,408 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const DashboardSkillGapRoute = DashboardSkillGapRouteImport.update({
+  id: '/skill-gap',
+  path: '/skill-gap',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSavedJobsRoute = DashboardSavedJobsRouteImport.update({
+  id: '/saved-jobs',
+  path: '/saved-jobs',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRoadmapRoute = DashboardRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardResumeRoute = DashboardResumeRouteImport.update({
+  id: '/resume',
+  path: '/resume',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRecommendationsRoute =
+  DashboardRecommendationsRouteImport.update({
+    id: '/recommendations',
+    path: '/recommendations',
+    getParentRoute: () => DashboardRoute,
+  } as any)
+const DashboardProfileRoute = DashboardProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardNotificationsRoute = DashboardNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardJobsRoute = DashboardJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardInterviewRoute = DashboardInterviewRouteImport.update({
+  id: '/interview',
+  path: '/interview',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardInternshipsRoute = DashboardInternshipsRouteImport.update({
+  id: '/internships',
+  path: '/internships',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardDiscoverRoute = DashboardDiscoverRouteImport.update({
+  id: '/discover',
+  path: '/discover',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardChatbotRoute = DashboardChatbotRouteImport.update({
+  id: '/chatbot',
+  path: '/chatbot',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCertificationsRoute = DashboardCertificationsRouteImport.update({
+  id: '/certifications',
+  path: '/certifications',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardApplicationsRoute = DashboardApplicationsRouteImport.update({
+  id: '/applications',
+  path: '/applications',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSkillsRoute = AdminSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminResumesRoute = AdminResumesRouteImport.update({
+  id: '/resumes',
+  path: '/resumes',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProfileRoute = AdminProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminJobsRoute = AdminJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInterviewsRoute = AdminInterviewsRouteImport.update({
+  id: '/interviews',
+  path: '/interviews',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInternshipsRoute = AdminInternshipsRouteImport.update({
+  id: '/internships',
+  path: '/internships',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEmployersRoute = AdminEmployersRouteImport.update({
+  id: '/employers',
+  path: '/employers',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCertificationsRoute = AdminCertificationsRouteImport.update({
+  id: '/certifications',
+  path: '/certifications',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminApplicationsRoute = AdminApplicationsRouteImport.update({
+  id: '/applications',
+  path: '/applications',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
-  '/login': typeof LoginRoute
-  '/signup': typeof SignupRoute
+  '/onboarding': typeof OnboardingRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/applications': typeof AdminApplicationsRoute
+  '/admin/certifications': typeof AdminCertificationsRoute
+  '/admin/employers': typeof AdminEmployersRoute
+  '/admin/internships': typeof AdminInternshipsRoute
+  '/admin/interviews': typeof AdminInterviewsRoute
+  '/admin/jobs': typeof AdminJobsRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/resumes': typeof AdminResumesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/skills': typeof AdminSkillsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/dashboard/applications': typeof DashboardApplicationsRoute
+  '/dashboard/certifications': typeof DashboardCertificationsRoute
+  '/dashboard/chatbot': typeof DashboardChatbotRoute
+  '/dashboard/discover': typeof DashboardDiscoverRoute
+  '/dashboard/internships': typeof DashboardInternshipsRoute
+  '/dashboard/interview': typeof DashboardInterviewRoute
+  '/dashboard/jobs': typeof DashboardJobsRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/recommendations': typeof DashboardRecommendationsRoute
+  '/dashboard/resume': typeof DashboardResumeRoute
+  '/dashboard/roadmap': typeof DashboardRoadmapRoute
+  '/dashboard/saved-jobs': typeof DashboardSavedJobsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/skill-gap': typeof DashboardSkillGapRoute
+  '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/forgot-password': typeof ForgotPasswordRoute
-  '/login': typeof LoginRoute
-  '/signup': typeof SignupRoute
+  '/onboarding': typeof OnboardingRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/applications': typeof AdminApplicationsRoute
+  '/admin/certifications': typeof AdminCertificationsRoute
+  '/admin/employers': typeof AdminEmployersRoute
+  '/admin/internships': typeof AdminInternshipsRoute
+  '/admin/interviews': typeof AdminInterviewsRoute
+  '/admin/jobs': typeof AdminJobsRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/resumes': typeof AdminResumesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/skills': typeof AdminSkillsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/dashboard/applications': typeof DashboardApplicationsRoute
+  '/dashboard/certifications': typeof DashboardCertificationsRoute
+  '/dashboard/chatbot': typeof DashboardChatbotRoute
+  '/dashboard/discover': typeof DashboardDiscoverRoute
+  '/dashboard/internships': typeof DashboardInternshipsRoute
+  '/dashboard/interview': typeof DashboardInterviewRoute
+  '/dashboard/jobs': typeof DashboardJobsRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/recommendations': typeof DashboardRecommendationsRoute
+  '/dashboard/resume': typeof DashboardResumeRoute
+  '/dashboard/roadmap': typeof DashboardRoadmapRoute
+  '/dashboard/saved-jobs': typeof DashboardSavedJobsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/skill-gap': typeof DashboardSkillGapRoute
+  '/admin': typeof AdminIndexRoute
   '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
-  '/login': typeof LoginRoute
-  '/signup': typeof SignupRoute
+  '/onboarding': typeof OnboardingRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/applications': typeof AdminApplicationsRoute
+  '/admin/certifications': typeof AdminCertificationsRoute
+  '/admin/employers': typeof AdminEmployersRoute
+  '/admin/internships': typeof AdminInternshipsRoute
+  '/admin/interviews': typeof AdminInterviewsRoute
+  '/admin/jobs': typeof AdminJobsRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/resumes': typeof AdminResumesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/skills': typeof AdminSkillsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/dashboard/applications': typeof DashboardApplicationsRoute
+  '/dashboard/certifications': typeof DashboardCertificationsRoute
+  '/dashboard/chatbot': typeof DashboardChatbotRoute
+  '/dashboard/discover': typeof DashboardDiscoverRoute
+  '/dashboard/internships': typeof DashboardInternshipsRoute
+  '/dashboard/interview': typeof DashboardInterviewRoute
+  '/dashboard/jobs': typeof DashboardJobsRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/recommendations': typeof DashboardRecommendationsRoute
+  '/dashboard/resume': typeof DashboardResumeRoute
+  '/dashboard/roadmap': typeof DashboardRoadmapRoute
+  '/dashboard/saved-jobs': typeof DashboardSavedJobsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/skill-gap': typeof DashboardSkillGapRoute
+  '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
+    | '/auth'
     | '/dashboard'
     | '/forgot-password'
-    | '/login'
-    | '/signup'
+    | '/onboarding'
+    | '/admin/analytics'
+    | '/admin/applications'
+    | '/admin/certifications'
+    | '/admin/employers'
+    | '/admin/internships'
+    | '/admin/interviews'
+    | '/admin/jobs'
+    | '/admin/notifications'
+    | '/admin/profile'
+    | '/admin/reports'
+    | '/admin/resumes'
+    | '/admin/settings'
+    | '/admin/skills'
+    | '/admin/users'
+    | '/dashboard/applications'
+    | '/dashboard/certifications'
+    | '/dashboard/chatbot'
+    | '/dashboard/discover'
+    | '/dashboard/internships'
+    | '/dashboard/interview'
+    | '/dashboard/jobs'
+    | '/dashboard/notifications'
+    | '/dashboard/profile'
+    | '/dashboard/recommendations'
+    | '/dashboard/resume'
+    | '/dashboard/roadmap'
+    | '/dashboard/saved-jobs'
+    | '/dashboard/settings'
+    | '/dashboard/skill-gap'
+    | '/admin/'
     | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/forgot-password' | '/login' | '/signup' | '/dashboard'
+  to:
+    | '/'
+    | '/auth'
+    | '/forgot-password'
+    | '/onboarding'
+    | '/admin/analytics'
+    | '/admin/applications'
+    | '/admin/certifications'
+    | '/admin/employers'
+    | '/admin/internships'
+    | '/admin/interviews'
+    | '/admin/jobs'
+    | '/admin/notifications'
+    | '/admin/profile'
+    | '/admin/reports'
+    | '/admin/resumes'
+    | '/admin/settings'
+    | '/admin/skills'
+    | '/admin/users'
+    | '/dashboard/applications'
+    | '/dashboard/certifications'
+    | '/dashboard/chatbot'
+    | '/dashboard/discover'
+    | '/dashboard/internships'
+    | '/dashboard/interview'
+    | '/dashboard/jobs'
+    | '/dashboard/notifications'
+    | '/dashboard/profile'
+    | '/dashboard/recommendations'
+    | '/dashboard/resume'
+    | '/dashboard/roadmap'
+    | '/dashboard/saved-jobs'
+    | '/dashboard/settings'
+    | '/dashboard/skill-gap'
+    | '/admin'
+    | '/dashboard'
   id:
     | '__root__'
     | '/'
+    | '/admin'
+    | '/auth'
     | '/dashboard'
     | '/forgot-password'
-    | '/login'
-    | '/signup'
+    | '/onboarding'
+    | '/admin/analytics'
+    | '/admin/applications'
+    | '/admin/certifications'
+    | '/admin/employers'
+    | '/admin/internships'
+    | '/admin/interviews'
+    | '/admin/jobs'
+    | '/admin/notifications'
+    | '/admin/profile'
+    | '/admin/reports'
+    | '/admin/resumes'
+    | '/admin/settings'
+    | '/admin/skills'
+    | '/admin/users'
+    | '/dashboard/applications'
+    | '/dashboard/certifications'
+    | '/dashboard/chatbot'
+    | '/dashboard/discover'
+    | '/dashboard/internships'
+    | '/dashboard/interview'
+    | '/dashboard/jobs'
+    | '/dashboard/notifications'
+    | '/dashboard/profile'
+    | '/dashboard/recommendations'
+    | '/dashboard/resume'
+    | '/dashboard/roadmap'
+    | '/dashboard/saved-jobs'
+    | '/dashboard/settings'
+    | '/dashboard/skill-gap'
+    | '/admin/'
     | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  AuthRoute: typeof AuthRoute
   DashboardRoute: typeof DashboardRouteWithChildren
   ForgotPasswordRoute: typeof ForgotPasswordRoute
-  LoginRoute: typeof LoginRoute
-  SignupRoute: typeof SignupRoute
+  OnboardingRoute: typeof OnboardingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forgot-password': {
@@ -130,6 +500,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -144,14 +528,292 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/dashboard/skill-gap': {
+      id: '/dashboard/skill-gap'
+      path: '/skill-gap'
+      fullPath: '/dashboard/skill-gap'
+      preLoaderRoute: typeof DashboardSkillGapRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/settings': {
+      id: '/dashboard/settings'
+      path: '/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/saved-jobs': {
+      id: '/dashboard/saved-jobs'
+      path: '/saved-jobs'
+      fullPath: '/dashboard/saved-jobs'
+      preLoaderRoute: typeof DashboardSavedJobsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/roadmap': {
+      id: '/dashboard/roadmap'
+      path: '/roadmap'
+      fullPath: '/dashboard/roadmap'
+      preLoaderRoute: typeof DashboardRoadmapRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/resume': {
+      id: '/dashboard/resume'
+      path: '/resume'
+      fullPath: '/dashboard/resume'
+      preLoaderRoute: typeof DashboardResumeRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/recommendations': {
+      id: '/dashboard/recommendations'
+      path: '/recommendations'
+      fullPath: '/dashboard/recommendations'
+      preLoaderRoute: typeof DashboardRecommendationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/profile': {
+      id: '/dashboard/profile'
+      path: '/profile'
+      fullPath: '/dashboard/profile'
+      preLoaderRoute: typeof DashboardProfileRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/notifications': {
+      id: '/dashboard/notifications'
+      path: '/notifications'
+      fullPath: '/dashboard/notifications'
+      preLoaderRoute: typeof DashboardNotificationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/jobs': {
+      id: '/dashboard/jobs'
+      path: '/jobs'
+      fullPath: '/dashboard/jobs'
+      preLoaderRoute: typeof DashboardJobsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/interview': {
+      id: '/dashboard/interview'
+      path: '/interview'
+      fullPath: '/dashboard/interview'
+      preLoaderRoute: typeof DashboardInterviewRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/internships': {
+      id: '/dashboard/internships'
+      path: '/internships'
+      fullPath: '/dashboard/internships'
+      preLoaderRoute: typeof DashboardInternshipsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/discover': {
+      id: '/dashboard/discover'
+      path: '/discover'
+      fullPath: '/dashboard/discover'
+      preLoaderRoute: typeof DashboardDiscoverRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/chatbot': {
+      id: '/dashboard/chatbot'
+      path: '/chatbot'
+      fullPath: '/dashboard/chatbot'
+      preLoaderRoute: typeof DashboardChatbotRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/certifications': {
+      id: '/dashboard/certifications'
+      path: '/certifications'
+      fullPath: '/dashboard/certifications'
+      preLoaderRoute: typeof DashboardCertificationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/applications': {
+      id: '/dashboard/applications'
+      path: '/applications'
+      fullPath: '/dashboard/applications'
+      preLoaderRoute: typeof DashboardApplicationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/skills': {
+      id: '/admin/skills'
+      path: '/skills'
+      fullPath: '/admin/skills'
+      preLoaderRoute: typeof AdminSkillsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/resumes': {
+      id: '/admin/resumes'
+      path: '/resumes'
+      fullPath: '/admin/resumes'
+      preLoaderRoute: typeof AdminResumesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/profile': {
+      id: '/admin/profile'
+      path: '/profile'
+      fullPath: '/admin/profile'
+      preLoaderRoute: typeof AdminProfileRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/jobs': {
+      id: '/admin/jobs'
+      path: '/jobs'
+      fullPath: '/admin/jobs'
+      preLoaderRoute: typeof AdminJobsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/interviews': {
+      id: '/admin/interviews'
+      path: '/interviews'
+      fullPath: '/admin/interviews'
+      preLoaderRoute: typeof AdminInterviewsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/internships': {
+      id: '/admin/internships'
+      path: '/internships'
+      fullPath: '/admin/internships'
+      preLoaderRoute: typeof AdminInternshipsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/employers': {
+      id: '/admin/employers'
+      path: '/employers'
+      fullPath: '/admin/employers'
+      preLoaderRoute: typeof AdminEmployersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/certifications': {
+      id: '/admin/certifications'
+      path: '/certifications'
+      fullPath: '/admin/certifications'
+      preLoaderRoute: typeof AdminCertificationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/applications': {
+      id: '/admin/applications'
+      path: '/applications'
+      fullPath: '/admin/applications'
+      preLoaderRoute: typeof AdminApplicationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
+  AdminApplicationsRoute: typeof AdminApplicationsRoute
+  AdminCertificationsRoute: typeof AdminCertificationsRoute
+  AdminEmployersRoute: typeof AdminEmployersRoute
+  AdminInternshipsRoute: typeof AdminInternshipsRoute
+  AdminInterviewsRoute: typeof AdminInterviewsRoute
+  AdminJobsRoute: typeof AdminJobsRoute
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
+  AdminProfileRoute: typeof AdminProfileRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminResumesRoute: typeof AdminResumesRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminSkillsRoute: typeof AdminSkillsRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
+  AdminApplicationsRoute: AdminApplicationsRoute,
+  AdminCertificationsRoute: AdminCertificationsRoute,
+  AdminEmployersRoute: AdminEmployersRoute,
+  AdminInternshipsRoute: AdminInternshipsRoute,
+  AdminInterviewsRoute: AdminInterviewsRoute,
+  AdminJobsRoute: AdminJobsRoute,
+  AdminNotificationsRoute: AdminNotificationsRoute,
+  AdminProfileRoute: AdminProfileRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminResumesRoute: AdminResumesRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminSkillsRoute: AdminSkillsRoute,
+  AdminUsersRoute: AdminUsersRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface DashboardRouteChildren {
+  DashboardApplicationsRoute: typeof DashboardApplicationsRoute
+  DashboardCertificationsRoute: typeof DashboardCertificationsRoute
+  DashboardChatbotRoute: typeof DashboardChatbotRoute
+  DashboardDiscoverRoute: typeof DashboardDiscoverRoute
+  DashboardInternshipsRoute: typeof DashboardInternshipsRoute
+  DashboardInterviewRoute: typeof DashboardInterviewRoute
+  DashboardJobsRoute: typeof DashboardJobsRoute
+  DashboardNotificationsRoute: typeof DashboardNotificationsRoute
+  DashboardProfileRoute: typeof DashboardProfileRoute
+  DashboardRecommendationsRoute: typeof DashboardRecommendationsRoute
+  DashboardResumeRoute: typeof DashboardResumeRoute
+  DashboardRoadmapRoute: typeof DashboardRoadmapRoute
+  DashboardSavedJobsRoute: typeof DashboardSavedJobsRoute
+  DashboardSettingsRoute: typeof DashboardSettingsRoute
+  DashboardSkillGapRoute: typeof DashboardSkillGapRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardApplicationsRoute: DashboardApplicationsRoute,
+  DashboardCertificationsRoute: DashboardCertificationsRoute,
+  DashboardChatbotRoute: DashboardChatbotRoute,
+  DashboardDiscoverRoute: DashboardDiscoverRoute,
+  DashboardInternshipsRoute: DashboardInternshipsRoute,
+  DashboardInterviewRoute: DashboardInterviewRoute,
+  DashboardJobsRoute: DashboardJobsRoute,
+  DashboardNotificationsRoute: DashboardNotificationsRoute,
+  DashboardProfileRoute: DashboardProfileRoute,
+  DashboardRecommendationsRoute: DashboardRecommendationsRoute,
+  DashboardResumeRoute: DashboardResumeRoute,
+  DashboardRoadmapRoute: DashboardRoadmapRoute,
+  DashboardSavedJobsRoute: DashboardSavedJobsRoute,
+  DashboardSettingsRoute: DashboardSettingsRoute,
+  DashboardSkillGapRoute: DashboardSkillGapRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
 
@@ -161,11 +823,22 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
+  AuthRoute: AuthRoute,
   DashboardRoute: DashboardRouteWithChildren,
   ForgotPasswordRoute: ForgotPasswordRoute,
-  LoginRoute: LoginRoute,
-  SignupRoute: SignupRoute,
+  OnboardingRoute: OnboardingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

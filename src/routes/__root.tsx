@@ -8,10 +8,13 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider } from "@/lib/theme";
+import { PopupProvider } from "@/components/PopupSystem";
+import { AuthProvider } from "@/lib/auth";
 
 function NotFoundComponent() {
   return (
@@ -96,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@300..900&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap",
       },
     ],
   }),
@@ -126,7 +129,18 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <Outlet />
+        <AuthProvider>
+          <PopupProvider>
+            <Outlet />
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                className: "!rounded-xl !border-border/80 !bg-card/90 !backdrop-blur-xl !shadow-glow !text-foreground",
+                duration: 4000,
+              }}
+            />
+          </PopupProvider>
+        </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );
