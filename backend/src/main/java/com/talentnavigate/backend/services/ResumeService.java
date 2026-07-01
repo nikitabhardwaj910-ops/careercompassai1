@@ -15,19 +15,30 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class ResumeService {
+
+    private static final Logger logger = LoggerFactory.getLogger(ResumeService.class);
 
     @Value("${gemini.api.key:}")
     private String geminiApiKey;
 
     public Map<String, Object> parseResume(MultipartFile file) throws Exception {
+        if (file == null || file.isEmpty()) {
+            throw new IllegalArgumentException("Uploaded resume file must not be null or empty.");
+        }
+        
+        logger.info("Parsing resume file: {} (size: {} bytes)", file.getOriginalFilename(), file.getSize());
+
         // Extract text from PDF
         String extractedText = extractTextFromPdf(file);
         
         // If no API key is configured, return mock data
         if (geminiApiKey == null || geminiApiKey.isEmpty() || geminiApiKey.equals("your_api_key_here")) {
-            System.err.println("WARNING: Gemini API Key not configured. Returning mock data.");
+            logger.warn("Gemini API Key not configured. Falling back to mock resume data.");
             return mockData();
         }
 
@@ -94,8 +105,7 @@ public class ResumeService {
             }
             throw new RuntimeException("Failed to parse response from Gemini");
         } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Gemini API call failed. Returning mock data.");
+            logger.error("Gemini API call failed during resume parsing. Falling back to mock data: {}", e.getMessage());
             return mockData();
         }
     }

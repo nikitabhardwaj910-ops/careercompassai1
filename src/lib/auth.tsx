@@ -191,6 +191,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.removeItem('onboarding_completed');
     localStorage.removeItem('user_role');
     localStorage.removeItem('admin_passkey_verified');
+    localStorage.removeItem('careercompass_user');
+    sessionStorage.clear();
     setUser(null);
   };
 
