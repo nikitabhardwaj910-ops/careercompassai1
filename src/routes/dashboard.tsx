@@ -11,7 +11,6 @@ import {
   TrendingUp,
   Mic,
   Bot,
-  Settings,
   Bell,
   Search,
   Menu,
@@ -63,7 +62,6 @@ const bottomNav = [
   { title: "Certifications", url: "/dashboard/certifications", icon: Award },
   { title: "Profile Settings", url: "/dashboard/profile", icon: User },
   { title: "Notifications", url: "/dashboard/notifications", icon: Bell },
-  { title: "System Settings", url: "/dashboard/settings", icon: Settings },
 ];
 
 function AppSidebar() {

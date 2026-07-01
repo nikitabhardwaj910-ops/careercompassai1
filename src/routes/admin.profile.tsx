@@ -205,7 +205,7 @@ function AdminProfile() {
             <div className="space-y-1">
               <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Admin Passkey Verification</label>
               <div className="flex items-center justify-between p-3 rounded-xl bg-background/50 border border-border/30">
-                <span className="text-sm font-bold text-green-500">Verified (COMPASS-ADMIN-2026)</span>
+                <span className="text-sm font-bold text-green-500">Verified</span>
                 <span className="text-xs text-muted-foreground font-mono">Active Session</span>
               </div>
             </div>

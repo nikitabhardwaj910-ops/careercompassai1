@@ -18,7 +18,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as DashboardSkillGapRouteImport } from './routes/dashboard.skill-gap'
-import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
 import { Route as DashboardSavedJobsRouteImport } from './routes/dashboard.saved-jobs'
 import { Route as DashboardRoadmapRouteImport } from './routes/dashboard.roadmap'
 import { Route as DashboardResumeRouteImport } from './routes/dashboard.resume'
@@ -42,7 +41,6 @@ import { Route as AdminNotificationsRouteImport } from './routes/admin.notificat
 import { Route as AdminJobsRouteImport } from './routes/admin.jobs'
 import { Route as AdminInterviewsRouteImport } from './routes/admin.interviews'
 import { Route as AdminInternshipsRouteImport } from './routes/admin.internships'
-import { Route as AdminEmployersRouteImport } from './routes/admin.employers'
 import { Route as AdminCertificationsRouteImport } from './routes/admin.certifications'
 import { Route as AdminApplicationsRouteImport } from './routes/admin.applications'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
@@ -90,11 +88,6 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
 const DashboardSkillGapRoute = DashboardSkillGapRouteImport.update({
   id: '/skill-gap',
   path: '/skill-gap',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardSavedJobsRoute = DashboardSavedJobsRouteImport.update({
@@ -213,11 +206,6 @@ const AdminInternshipsRoute = AdminInternshipsRouteImport.update({
   path: '/internships',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminEmployersRoute = AdminEmployersRouteImport.update({
-  id: '/employers',
-  path: '/employers',
-  getParentRoute: () => AdminRoute,
-} as any)
 const AdminCertificationsRoute = AdminCertificationsRouteImport.update({
   id: '/certifications',
   path: '/certifications',
@@ -244,7 +232,6 @@ export interface FileRoutesByFullPath {
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/admin/certifications': typeof AdminCertificationsRoute
-  '/admin/employers': typeof AdminEmployersRoute
   '/admin/internships': typeof AdminInternshipsRoute
   '/admin/interviews': typeof AdminInterviewsRoute
   '/admin/jobs': typeof AdminJobsRoute
@@ -268,7 +255,6 @@ export interface FileRoutesByFullPath {
   '/dashboard/resume': typeof DashboardResumeRoute
   '/dashboard/roadmap': typeof DashboardRoadmapRoute
   '/dashboard/saved-jobs': typeof DashboardSavedJobsRoute
-  '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/skill-gap': typeof DashboardSkillGapRoute
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -281,7 +267,6 @@ export interface FileRoutesByTo {
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/admin/certifications': typeof AdminCertificationsRoute
-  '/admin/employers': typeof AdminEmployersRoute
   '/admin/internships': typeof AdminInternshipsRoute
   '/admin/interviews': typeof AdminInterviewsRoute
   '/admin/jobs': typeof AdminJobsRoute
@@ -305,7 +290,6 @@ export interface FileRoutesByTo {
   '/dashboard/resume': typeof DashboardResumeRoute
   '/dashboard/roadmap': typeof DashboardRoadmapRoute
   '/dashboard/saved-jobs': typeof DashboardSavedJobsRoute
-  '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/skill-gap': typeof DashboardSkillGapRoute
   '/admin': typeof AdminIndexRoute
   '/dashboard': typeof DashboardIndexRoute
@@ -321,7 +305,6 @@ export interface FileRoutesById {
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/admin/certifications': typeof AdminCertificationsRoute
-  '/admin/employers': typeof AdminEmployersRoute
   '/admin/internships': typeof AdminInternshipsRoute
   '/admin/interviews': typeof AdminInterviewsRoute
   '/admin/jobs': typeof AdminJobsRoute
@@ -345,7 +328,6 @@ export interface FileRoutesById {
   '/dashboard/resume': typeof DashboardResumeRoute
   '/dashboard/roadmap': typeof DashboardRoadmapRoute
   '/dashboard/saved-jobs': typeof DashboardSavedJobsRoute
-  '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/skill-gap': typeof DashboardSkillGapRoute
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -362,7 +344,6 @@ export interface FileRouteTypes {
     | '/admin/analytics'
     | '/admin/applications'
     | '/admin/certifications'
-    | '/admin/employers'
     | '/admin/internships'
     | '/admin/interviews'
     | '/admin/jobs'
@@ -386,7 +367,6 @@ export interface FileRouteTypes {
     | '/dashboard/resume'
     | '/dashboard/roadmap'
     | '/dashboard/saved-jobs'
-    | '/dashboard/settings'
     | '/dashboard/skill-gap'
     | '/admin/'
     | '/dashboard/'
@@ -399,7 +379,6 @@ export interface FileRouteTypes {
     | '/admin/analytics'
     | '/admin/applications'
     | '/admin/certifications'
-    | '/admin/employers'
     | '/admin/internships'
     | '/admin/interviews'
     | '/admin/jobs'
@@ -423,7 +402,6 @@ export interface FileRouteTypes {
     | '/dashboard/resume'
     | '/dashboard/roadmap'
     | '/dashboard/saved-jobs'
-    | '/dashboard/settings'
     | '/dashboard/skill-gap'
     | '/admin'
     | '/dashboard'
@@ -438,7 +416,6 @@ export interface FileRouteTypes {
     | '/admin/analytics'
     | '/admin/applications'
     | '/admin/certifications'
-    | '/admin/employers'
     | '/admin/internships'
     | '/admin/interviews'
     | '/admin/jobs'
@@ -462,7 +439,6 @@ export interface FileRouteTypes {
     | '/dashboard/resume'
     | '/dashboard/roadmap'
     | '/dashboard/saved-jobs'
-    | '/dashboard/settings'
     | '/dashboard/skill-gap'
     | '/admin/'
     | '/dashboard/'
@@ -540,13 +516,6 @@ declare module '@tanstack/react-router' {
       path: '/skill-gap'
       fullPath: '/dashboard/skill-gap'
       preLoaderRoute: typeof DashboardSkillGapRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/dashboard/settings': {
-      id: '/dashboard/settings'
-      path: '/settings'
-      fullPath: '/dashboard/settings'
-      preLoaderRoute: typeof DashboardSettingsRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/dashboard/saved-jobs': {
@@ -710,13 +679,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminInternshipsRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/employers': {
-      id: '/admin/employers'
-      path: '/employers'
-      fullPath: '/admin/employers'
-      preLoaderRoute: typeof AdminEmployersRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/admin/certifications': {
       id: '/admin/certifications'
       path: '/certifications'
@@ -745,7 +707,6 @@ interface AdminRouteChildren {
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
   AdminApplicationsRoute: typeof AdminApplicationsRoute
   AdminCertificationsRoute: typeof AdminCertificationsRoute
-  AdminEmployersRoute: typeof AdminEmployersRoute
   AdminInternshipsRoute: typeof AdminInternshipsRoute
   AdminInterviewsRoute: typeof AdminInterviewsRoute
   AdminJobsRoute: typeof AdminJobsRoute
@@ -763,7 +724,6 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminAnalyticsRoute: AdminAnalyticsRoute,
   AdminApplicationsRoute: AdminApplicationsRoute,
   AdminCertificationsRoute: AdminCertificationsRoute,
-  AdminEmployersRoute: AdminEmployersRoute,
   AdminInternshipsRoute: AdminInternshipsRoute,
   AdminInterviewsRoute: AdminInterviewsRoute,
   AdminJobsRoute: AdminJobsRoute,
@@ -793,7 +753,6 @@ interface DashboardRouteChildren {
   DashboardResumeRoute: typeof DashboardResumeRoute
   DashboardRoadmapRoute: typeof DashboardRoadmapRoute
   DashboardSavedJobsRoute: typeof DashboardSavedJobsRoute
-  DashboardSettingsRoute: typeof DashboardSettingsRoute
   DashboardSkillGapRoute: typeof DashboardSkillGapRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
@@ -812,7 +771,6 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardResumeRoute: DashboardResumeRoute,
   DashboardRoadmapRoute: DashboardRoadmapRoute,
   DashboardSavedJobsRoute: DashboardSavedJobsRoute,
-  DashboardSettingsRoute: DashboardSettingsRoute,
   DashboardSkillGapRoute: DashboardSkillGapRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }

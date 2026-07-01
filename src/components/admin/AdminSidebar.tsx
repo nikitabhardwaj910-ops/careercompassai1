@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import {
   LayoutDashboard,
   Users,
-  Building2,
   Briefcase,
   GraduationCap,
   BrainCircuit,
@@ -44,7 +43,6 @@ export function AdminSidebar() {
     ]},
     { title: "Management", items: [
       { name: "Users", href: "/admin/users", icon: Users },
-      { name: "Employers", href: "/admin/employers", icon: Building2 },
       { name: "Jobs", href: "/admin/jobs", icon: Briefcase },
       { name: "Internships", href: "/admin/internships", icon: GraduationCap },
     ]},

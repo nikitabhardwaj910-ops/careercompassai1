@@ -47,7 +47,7 @@ function AuthPage() {
   const [focusField, setFocusField] = useState<string | null>(null);
   const [adminPasskey, setAdminPasskey] = useState("");
 
-  const ADMIN_PASSKEY = "COMPASS-ADMIN-2026";
+  const ADMIN_PASSKEY = "MORNIK-2026";
 
   const verifyAdminAccess = () => {
     if (role === "admin") {
@@ -281,9 +281,8 @@ function AuthPage() {
                             onBlur={() => setFocusField(null)}
                           />
                         </div>
-                        <div className="flex items-center justify-between text-[11px] text-amber-500/90 pt-0.5 px-0.5">
+                        <div className="flex items-center text-[11px] text-amber-500/90 pt-0.5 px-0.5">
                           <span>Protects admin portal access</span>
-                          <span>Demo Key: <code className="font-mono font-bold bg-amber-500/20 px-1.5 py-0.5 rounded">COMPASS-ADMIN-2026</code></span>
                         </div>
                       </motion.div>
                     )}
@@ -459,9 +458,8 @@ function AuthPage() {
                             onBlur={() => setFocusField(null)}
                           />
                         </div>
-                        <div className="flex items-center justify-between text-[11px] text-amber-500/90 pt-0.5 px-0.5">
+                        <div className="flex items-center text-[11px] text-amber-500/90 pt-0.5 px-0.5">
                           <span>Protects admin portal registration</span>
-                          <span>Demo Key: <code className="font-mono font-bold bg-amber-500/20 px-1.5 py-0.5 rounded">COMPASS-ADMIN-2026</code></span>
                         </div>
                       </motion.div>
                     )}
