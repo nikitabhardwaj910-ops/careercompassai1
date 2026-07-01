@@ -32,7 +32,7 @@ function AdminNotifications() {
   const { data: notifications = [], isLoading } = useQuery({
     queryKey: ["admin-notifications"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8081/api/admin/notifications");
+      const res = await fetch("https://careercompassai1.onrender.com/api/admin/notifications");
       if (!res.ok) throw new Error("Failed to fetch notifications");
       return res.json();
     }
@@ -40,7 +40,7 @@ function AdminNotifications() {
 
   const mutation = useMutation({
     mutationFn: async (data: NotificationFormData & { status: string }) => {
-      const res = await fetch("http://localhost:8081/api/admin/notifications", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/admin/notifications", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

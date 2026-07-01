@@ -25,7 +25,7 @@ function AdminProfile() {
     queryKey: ["admin-profile"],
     queryFn: async () => {
       const token = localStorage.getItem("jwt_token");
-      const res = await fetch("http://localhost:8081/api/admin/profile", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/admin/profile", {
         headers: {
           "Content-Type": "application/json",
           ...(token ? { Authorization: `Bearer ${token}` } : {})
@@ -71,7 +71,7 @@ function AdminProfile() {
         });
       }
       const token = localStorage.getItem("jwt_token");
-      await fetch("http://localhost:8081/api/admin/profile", {
+      await fetch("https://careercompassai1.onrender.com/api/admin/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

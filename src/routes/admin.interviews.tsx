@@ -16,7 +16,7 @@ function AdminInterviews() {
 
   const fetchInterviews = async () => {
     try {
-      const res = await fetch("http://localhost:8081/api/applications/all");
+      const res = await fetch("https://careercompassai1.onrender.com/api/applications/all");
       if (res.ok) {
         const data = await res.json();
         const interviewApps = data.filter((app: any) => app.status === "Interview");
@@ -37,7 +37,7 @@ function AdminInterviews() {
     const newDate = window.prompt("Enter new Interview Date & Time:", app.interviewDate || "Next Monday at 10:00 AM");
     if (newDate === null) return;
     try {
-      const res = await fetch(`http://localhost:8081/api/applications/${app.id}/status`, {
+      const res = await fetch(`https://careercompassai1.onrender.com/api/applications/${app.id}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "Interview", interviewDate: newDate })

@@ -32,7 +32,7 @@ function ResumeAnalyzerPage() {
 
     try {
       toast.info("Gemini AI is scanning your resume...");
-      const res = await fetch("http://localhost:8081/api/resume/upload", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/resume/upload", {
         method: "POST",
         body: formData,
       });

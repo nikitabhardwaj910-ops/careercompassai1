@@ -13,7 +13,7 @@ function AdminDashboardIndex() {
   const { data: stats, isLoading } = useQuery({
     queryKey: ["admin-dashboard-stats"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8081/api/admin/dashboard-stats");
+      const res = await fetch("https://careercompassai1.onrender.com/api/admin/dashboard-stats");
       if (!res.ok) throw new Error("Failed to fetch dashboard stats");
       return res.json();
     }

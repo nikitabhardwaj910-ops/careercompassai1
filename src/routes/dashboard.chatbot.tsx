@@ -54,7 +54,7 @@ function ChatbotPage() {
         text: m.text
       }));
 
-      const res = await fetch("http://localhost:8081/api/chatbot/ask", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/chatbot/ask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

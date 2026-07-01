@@ -122,11 +122,11 @@ function DashboardHome() {
         const headers = { Authorization: `Bearer ${token}` };
         
         const name = user?.fullName || JSON.parse(localStorage.getItem("careercompass_user") || "{}").fullName || "Nikita Candidate";
-        const appsRes = await fetch(`http://localhost:8081/api/applications/me?applicantName=${encodeURIComponent(name)}`, { headers });
+        const appsRes = await fetch(`https://careercompassai1.onrender.com/api/applications/me?applicantName=${encodeURIComponent(name)}`, { headers });
         if (appsRes.ok) setMyApplications(await appsRes.json());
         
         // Fetch jobs
-        const jobsRes = await fetch("http://localhost:8081/api/jobs", { headers });
+        const jobsRes = await fetch("https://careercompassai1.onrender.com/api/jobs", { headers });
         if (jobsRes.ok) setActiveJobs(await jobsRes.json());
       } catch (e) {
         console.error("Failed to fetch dashboard data");

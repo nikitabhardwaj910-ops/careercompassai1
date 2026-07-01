@@ -13,7 +13,7 @@ function AdminAnalytics() {
   const { data, isLoading } = useQuery({
     queryKey: ["admin-analytics"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8081/api/admin/analytics");
+      const res = await fetch("https://careercompassai1.onrender.com/api/admin/analytics");
       if (!res.ok) throw new Error("Failed to fetch analytics");
       return res.json();
     }

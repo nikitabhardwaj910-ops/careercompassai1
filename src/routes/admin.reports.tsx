@@ -22,7 +22,7 @@ function AdminReports() {
   const { data, isLoading } = useQuery({
     queryKey: ["admin-reports"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8081/api/admin/reports");
+      const res = await fetch("https://careercompassai1.onrender.com/api/admin/reports");
       if (!res.ok) throw new Error("Failed to fetch reports");
       return res.json();
     }

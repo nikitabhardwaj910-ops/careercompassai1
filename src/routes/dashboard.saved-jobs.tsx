@@ -42,7 +42,7 @@ function SavedJobsPage() {
       const userStr = localStorage.getItem("careercompass_user");
       const user = userStr ? JSON.parse(userStr) : {};
       const name = user.fullName || "Nikita Candidate";
-      const res = await fetch(`http://localhost:8081/api/applications/${job.id}?applicantName=${encodeURIComponent(name)}`, {
+      const res = await fetch(`https://careercompassai1.onrender.com/api/applications/${job.id}?applicantName=${encodeURIComponent(name)}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` }
       });

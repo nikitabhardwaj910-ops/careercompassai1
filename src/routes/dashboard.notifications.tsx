@@ -16,7 +16,7 @@ function NotificationsPage() {
 
   const fetchNotifications = async () => {
     try {
-      const res = await fetch("http://localhost:8081/api/notifications");
+      const res = await fetch("https://careercompassai1.onrender.com/api/notifications");
       if (res.ok) {
         const data = await res.json();
         setNotifications(data);
@@ -37,7 +37,7 @@ function NotificationsPage() {
 
   const markAllRead = async () => {
     try {
-      await fetch("http://localhost:8081/api/notifications/mark-all-read", { method: "POST" });
+      await fetch("https://careercompassai1.onrender.com/api/notifications/mark-all-read", { method: "POST" });
       setNotifications(prev => prev.map(n => ({ ...n, read: true })));
       toast.success("All notifications marked as read!");
     } catch (e) {

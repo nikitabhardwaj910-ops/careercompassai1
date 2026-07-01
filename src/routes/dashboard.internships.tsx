@@ -22,7 +22,7 @@ function InternshipsPage() {
   const fetchInternships = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8081/api/jobs/all");
+      const res = await fetch("https://careercompassai1.onrender.com/api/jobs/all");
       if (res.ok) {
         const data = await res.json();
         const filtered = data.filter((j: any) => j.type && j.type.toLowerCase().includes("intern"));
@@ -44,7 +44,7 @@ function InternshipsPage() {
     try {
       setAiLoading(true);
       const parsed = JSON.parse(savedResume);
-      const res = await fetch("http://localhost:8081/api/jobs/recommendations", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/jobs/recommendations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -75,7 +75,7 @@ function InternshipsPage() {
       const user = userStr ? JSON.parse(userStr) : {};
       const name = user.fullName || "Nikita Candidate";
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const res = await fetch(`http://localhost:8081/api/applications/me?applicantName=${encodeURIComponent(name)}`, { headers });
+      const res = await fetch(`https://careercompassai1.onrender.com/api/applications/me?applicantName=${encodeURIComponent(name)}`, { headers });
       if (res.ok) {
         const data = await res.json();
         setAppliedIds(data.map((app: any) => app.job?.id).filter(Boolean));
@@ -99,7 +99,7 @@ function InternshipsPage() {
       const userStr = localStorage.getItem("careercompass_user");
       const user = userStr ? JSON.parse(userStr) : {};
       const name = user.fullName || "Nikita Candidate";
-      const res = await fetch(`http://localhost:8081/api/applications/${jobId}?applicantName=${encodeURIComponent(name)}`, {
+      const res = await fetch(`https://careercompassai1.onrender.com/api/applications/${jobId}?applicantName=${encodeURIComponent(name)}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` }
       });

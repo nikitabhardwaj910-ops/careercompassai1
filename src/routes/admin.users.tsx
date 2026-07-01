@@ -15,7 +15,7 @@ function AdminUsers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("http://localhost:8081/api/users/all");
+        const res = await fetch("https://careercompassai1.onrender.com/api/users/all");
         let list = [];
         if (res.ok) {
           list = await res.json();

@@ -26,7 +26,7 @@ function AdminJobs() {
   const fetchJobs = async () => {
     try {
       const token = localStorage.getItem("jwt_token");
-      const res = await fetch("http://localhost:8081/api/jobs/all", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/jobs/all", {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -49,7 +49,7 @@ function AdminJobs() {
     e.preventDefault();
     const token = localStorage.getItem("jwt_token");
     try {
-      const res = await fetch("http://localhost:8081/api/jobs", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/jobs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

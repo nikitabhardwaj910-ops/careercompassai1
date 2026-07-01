@@ -438,7 +438,7 @@ function HeroResumeSimulator() {
 
     try {
       const token = localStorage.getItem("jwt_token");
-      const res = await fetch("http://localhost:8081/api/resume/upload", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/resume/upload", {
         method: "POST",
         headers: {
           ...(token ? { Authorization: `Bearer ${token}` } : {}),

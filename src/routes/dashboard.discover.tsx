@@ -130,11 +130,11 @@ function DiscoverPage() {
 
       // Fetch all listings processed/posted by Admin from the Spring Boot API
       let allItems: any[] = [];
-      const res = await fetch("http://localhost:8081/api/jobs/all", { headers }).catch(() => null);
+      const res = await fetch("https://careercompassai1.onrender.com/api/jobs/all", { headers }).catch(() => null);
       if (res && res.ok) {
         allItems = await res.json();
       } else {
-        const fallbackRes = await fetch("http://localhost:8081/api/jobs", { headers }).catch(() => null);
+        const fallbackRes = await fetch("https://careercompassai1.onrender.com/api/jobs", { headers }).catch(() => null);
         if (fallbackRes && fallbackRes.ok) {
           allItems = await fallbackRes.json();
         }

@@ -42,7 +42,7 @@ function JobsPage() {
   const fetchJobs = async () => {
     try {
       const token = localStorage.getItem("jwt_token");
-      const res = await fetch("http://localhost:8081/api/jobs", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/jobs", {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -88,7 +88,7 @@ function JobsPage() {
       const userStr = localStorage.getItem("careercompass_user");
       const user = userStr ? JSON.parse(userStr) : {};
       const name = user.fullName || "Nikita Candidate";
-      const res = await fetch(`http://localhost:8081/api/applications/${jobId}?applicantName=${encodeURIComponent(name)}`, {
+      const res = await fetch(`https://careercompassai1.onrender.com/api/applications/${jobId}?applicantName=${encodeURIComponent(name)}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` }
       });

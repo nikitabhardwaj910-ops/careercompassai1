@@ -25,7 +25,7 @@ function AdminInternships() {
 
   const fetchInternships = async () => {
     try {
-      const res = await fetch("http://localhost:8081/api/jobs/all");
+      const res = await fetch("https://careercompassai1.onrender.com/api/jobs/all");
       if (res.ok) {
         const data = await res.json();
         const filtered = data.filter((j: any) => j.type && j.type.toLowerCase().includes("intern"));
@@ -45,7 +45,7 @@ function AdminInternships() {
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8081/api/jobs", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/jobs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

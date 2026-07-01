@@ -30,7 +30,7 @@ function AdminResumes() {
   const [avgScore, setAvgScore] = useState(78.4);
 
   useEffect(() => {
-    fetch("http://localhost:8081/api/users/all").then(r => r.json()).then(users => {
+    fetch("https://careercompassai1.onrender.com/api/users/all").then(r => r.json()).then(users => {
       if (Array.isArray(users) && users.length > 0) {
         setTotalResumes(users.length);
         let sum = 0;

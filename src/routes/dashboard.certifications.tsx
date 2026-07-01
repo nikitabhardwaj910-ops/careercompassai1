@@ -87,7 +87,7 @@ function CertificationsPage() {
         user.certifications = currentCerts;
         localStorage.setItem("careercompass_user", JSON.stringify(user));
 
-        await fetch("http://localhost:8081/api/users/me", {
+        await fetch("https://careercompassai1.onrender.com/api/users/me", {
           method: "PUT",
           headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           body: JSON.stringify(user)

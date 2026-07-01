@@ -56,7 +56,7 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
-const API_URL = 'http://localhost:8081/api';
+const API_URL = (import.meta.env.VITE_SERVER_URL || 'https://careercompassai1.onrender.com') + '/api';
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(() => {

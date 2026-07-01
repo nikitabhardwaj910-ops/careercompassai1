@@ -42,7 +42,7 @@ function ApplicationsPage() {
       const user = userStr ? JSON.parse(userStr) : {};
       const name = user.fullName || "Nikita Candidate";
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const res = await fetch(`http://localhost:8081/api/applications/me?applicantName=${encodeURIComponent(name)}`, { headers });
+      const res = await fetch(`https://careercompassai1.onrender.com/api/applications/me?applicantName=${encodeURIComponent(name)}`, { headers });
       if (res.ok) {
         const data = await res.json();
         setApps(data);

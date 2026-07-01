@@ -61,7 +61,7 @@ function ProfilePage() {
     // Fetch from API to get latest registration data
     const token = localStorage.getItem("jwt_token");
     if (token) {
-      fetch("http://localhost:8081/api/users/me", {
+      fetch("https://careercompassai1.onrender.com/api/users/me", {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(r => r.json())
@@ -108,7 +108,7 @@ function ProfilePage() {
     const token = localStorage.getItem("jwt_token");
     if (token) {
       try {
-        await fetch("http://localhost:8081/api/users/me", {
+        await fetch("https://careercompassai1.onrender.com/api/users/me", {
           method: "PUT",
           headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           body: JSON.stringify(updated)

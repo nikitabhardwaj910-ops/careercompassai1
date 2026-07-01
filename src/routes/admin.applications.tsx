@@ -17,7 +17,7 @@ function AdminApplications() {
   const fetchApplications = async () => {
     try {
       const token = localStorage.getItem("jwt_token");
-      const res = await fetch("http://localhost:8081/api/applications/all", {
+      const res = await fetch("https://careercompassai1.onrender.com/api/applications/all", {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -43,7 +43,7 @@ function AdminApplications() {
     }
     try {
       const token = localStorage.getItem("jwt_token");
-      const res = await fetch(`http://localhost:8081/api/applications/${id}/status`, {
+      const res = await fetch(`https://careercompassai1.onrender.com/api/applications/${id}/status`, {
         method: "PUT",
         headers: { 
           "Content-Type": "application/json",

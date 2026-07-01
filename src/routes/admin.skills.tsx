@@ -23,7 +23,7 @@ function AdminSkills() {
   const [totalCerts, setTotalCerts] = useState(3);
 
   useEffect(() => {
-    fetch("http://localhost:8081/api/users/all").then(r => r.json()).then(users => {
+    fetch("https://careercompassai1.onrender.com/api/users/all").then(r => r.json()).then(users => {
       if (Array.isArray(users) && users.length > 0) {
         const uniqueSkills = new Set<string>();
         const counts: any = {};
