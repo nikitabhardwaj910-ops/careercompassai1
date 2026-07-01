@@ -1,0 +1,7 @@
+reviews:
+  auto_review: true
+
+chat:
+  auto_reply: true
+
+language: en
