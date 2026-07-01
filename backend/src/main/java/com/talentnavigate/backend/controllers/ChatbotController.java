@@ -84,7 +84,7 @@ public class ChatbotController {
 
             HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
             
-            String geminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + geminiApiKey;
+            String geminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + geminiApiKey;
             ResponseEntity<Map> response = restTemplate.postForEntity(geminiUrl, entity, Map.class);
             
             Map<String, Object> responseBody = response.getBody();
