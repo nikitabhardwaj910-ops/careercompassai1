@@ -32,4 +32,18 @@ public class Notification {
     private boolean read = false;
 
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column(name = "user_id")
+    private String userId;
+
+    public Notification(String id, String type, String title, String message, String time, boolean read, LocalDateTime createdAt) {
+        this.id = id;
+        this.type = type;
+        this.title = title;
+        this.message = message;
+        this.time = time;
+        this.read = read;
+        this.createdAt = createdAt;
+    }
 }
+

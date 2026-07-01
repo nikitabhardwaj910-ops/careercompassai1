@@ -117,19 +117,6 @@ public class ApplicationController {
     public ResponseEntity<List<Application>> getMyApplications(Authentication authentication, @RequestParam(required = false) String applicantName) {
         User user = getCurrentOrFallbackUser(authentication, applicantName);
         List<Application> apps = applicationRepository.findByUserId(user.getId());
-        if (apps.isEmpty()) {
-            List<Application> all = applicationRepository.findAll();
-            if (applicantName != null && !applicantName.trim().isEmpty()) {
-                List<Application> filtered = new ArrayList<>();
-                for (Application a : all) {
-                    if (a.getUser() != null && applicantName.equalsIgnoreCase(a.getUser().getFullName())) {
-                        filtered.add(a);
-                    }
-                }
-                if (!filtered.isEmpty()) return ResponseEntity.ok(filtered);
-            }
-            return ResponseEntity.ok(all);
-        }
         return ResponseEntity.ok(apps);
     }
 
@@ -165,6 +152,7 @@ public class ApplicationController {
             notif.setCreatedAt(LocalDateTime.now());
             notif.setTime("Just now");
             notif.setRead(false);
+            notif.setUserId(app.getUser() != null ? app.getUser().getId() : null);
 
             String roleName = app.getJob() != null ? app.getJob().getTitle() : "Role";
             String compName = app.getJob() != null ? app.getJob().getCompany() : "Company";
