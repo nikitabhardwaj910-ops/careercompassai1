@@ -59,14 +59,21 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const API_URL = (import.meta.env.VITE_SERVER_URL || 'https://careercompassai1.onrender.com') + '/api';
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(() => {
+  const [user, setUser] = useState<User | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
     try {
       const stored = localStorage.getItem('careercompass_user');
-      return stored ? JSON.parse(stored) : null;
+      if (stored) {
+        setUser(JSON.parse(stored));
+      }
     } catch {
-      return null;
+      // ignore
+    } finally {
+      setIsInitialized(true);
     }
-  });
+  }, []);
 
   const getAuthHeaders = () => {
     const token = localStorage.getItem('jwt_token');
@@ -94,12 +101,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
+    if (!isInitialized) return;
     if (user) {
       localStorage.setItem('careercompass_user', JSON.stringify(user));
     } else {
       localStorage.removeItem('careercompass_user');
     }
-  }, [user]);
+  }, [user, isInitialized]);
 
   // Fetch latest profile on mount if token exists
   useEffect(() => {
