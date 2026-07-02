@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Search, Filter, Briefcase, CheckCircle2, XCircle, MoreHorizontal, Loader2, Plus, ArrowLeft, Calendar } from "lucide-react";
+import { Search, Filter, Briefcase, CheckCircle2, XCircle, MoreHorizontal, Loader2, Plus, ArrowLeft, Calendar, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -71,6 +71,25 @@ function AdminJobs() {
       }
     } catch (e) {
       toast.error("An error occurred");
+    }
+  };
+
+  const handleDeleteJob = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this job post?")) return;
+    const token = localStorage.getItem("jwt_token");
+    try {
+      const res = await fetch(`https://careercompassai1.onrender.com/api/jobs/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.ok) {
+        toast.success("Job deleted successfully!");
+        setJobs(prev => prev.filter(j => j.id !== id));
+      } else {
+        toast.error("Failed to delete job");
+      }
+    } catch (e) {
+      toast.error("An error occurred while deleting");
     }
   };
 
@@ -216,9 +235,16 @@ function AdminJobs() {
                     {job.applicantsCount}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right">
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
-                      <MoreHorizontal className="w-4 h-4" />
-                    </Button>
+                    <div className="flex items-center justify-end gap-2">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={() => handleDeleteJob(job.id)}
+                        className="h-8 px-2 text-red-500 hover:text-red-600 hover:bg-red-500/10 gap-1.5 font-bold text-xs"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" /> Delete
+                      </Button>
+                    </div>
                   </td>
                 </motion.tr>
               ))}

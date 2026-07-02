@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Search, Filter, GraduationCap, Plus, Loader2, Calendar, MapPin, Building2, X } from "lucide-react";
+import { Search, Filter, GraduationCap, Plus, Loader2, Calendar, MapPin, Building2, X, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -75,6 +75,25 @@ function AdminInternships() {
     }
   };
 
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this internship post?")) return;
+    const token = localStorage.getItem("jwt_token");
+    try {
+      const res = await fetch(`https://careercompassai1.onrender.com/api/jobs/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.ok) {
+        toast.success("Internship deleted successfully!");
+        setInternships(prev => prev.filter(j => j.id !== id));
+      } else {
+        toast.error("Failed to delete internship");
+      }
+    } catch (e) {
+      toast.error("An error occurred while deleting");
+    }
+  };
+
   const filteredList = internships.filter(j =>
     j.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
     j.company?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -134,19 +153,20 @@ function AdminInternships() {
                 <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Status</th>
                 <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Applicants</th>
                 <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Posted</th>
+                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/20">
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="py-12 text-center text-muted-foreground">
+                  <td colSpan={7} className="py-12 text-center text-muted-foreground">
                     <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-primary" />
                     Loading internships...
                   </td>
                 </tr>
               ) : filteredList.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-12 text-center text-muted-foreground">
+                  <td colSpan={7} className="py-12 text-center text-muted-foreground">
                     No internship openings found. Click "Create Internship" to post one!
                   </td>
                 </tr>
@@ -187,6 +207,18 @@ function AdminInternships() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-xs text-muted-foreground font-mono">
                     {job.postedAt ? new Date(job.postedAt).toLocaleDateString() : "Today"}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                    <div className="flex items-center justify-end gap-2">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={() => handleDelete(job.id)}
+                        className="h-8 px-2 text-red-500 hover:text-red-600 hover:bg-red-500/10 gap-1.5 font-bold text-xs"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" /> Delete
+                      </Button>
+                    </div>
                   </td>
                 </motion.tr>
               ))}

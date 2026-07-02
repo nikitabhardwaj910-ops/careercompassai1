@@ -1,8 +1,10 @@
 package com.talentnavigate.backend.controllers;
 
+import com.talentnavigate.backend.models.Application;
 import com.talentnavigate.backend.models.Job;
 import com.talentnavigate.backend.models.Notification;
 import com.talentnavigate.backend.models.User;
+import com.talentnavigate.backend.repositories.ApplicationRepository;
 import com.talentnavigate.backend.repositories.JobRepository;
 import com.talentnavigate.backend.repositories.NotificationRepository;
 import com.talentnavigate.backend.repositories.UserRepository;
@@ -14,6 +16,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,8 +39,24 @@ public class JobController {
     @Autowired
     private NotificationRepository notificationRepository;
 
+    @Autowired
+    private ApplicationRepository applicationRepository;
+
     @Value("${gemini.api.key:}")
     private String geminiApiKey;
+
+    @Transactional
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteJob(@PathVariable String id) {
+        return jobRepository.findById(id).map(job -> {
+            List<Application> applications = applicationRepository.findByJobId(id);
+            if (!applications.isEmpty()) {
+                applicationRepository.deleteAll(applications);
+            }
+            jobRepository.delete(job);
+            return ResponseEntity.ok().build();
+        }).orElse(ResponseEntity.notFound().build());
+    }
 
     @GetMapping
     public ResponseEntity<List<Job>> getAllActiveJobs() {
