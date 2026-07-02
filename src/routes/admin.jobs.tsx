@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Search, Filter, Briefcase, CheckCircle2, XCircle, MoreHorizontal, Loader2, Plus, ArrowLeft, Calendar, Trash2 } from "lucide-react";
+import { Search, Filter, Briefcase, CheckCircle2, XCircle, MoreHorizontal, Loader2, Plus, ArrowLeft, Calendar, Trash2, Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { MOCK_FULL_TIME_JOBS } from "@/lib/mockJobsData";
 
 export const Route = createFileRoute("/admin/jobs")({
   component: AdminJobs,
@@ -13,6 +14,7 @@ function AdminJobs() {
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isCreating, setIsCreating] = useState(false);
+  const [seeding, setSeeding] = useState(false);
 
   // Form state
   const [title, setTitle] = useState("");
@@ -44,6 +46,31 @@ function AdminJobs() {
   useEffect(() => {
     fetchJobs();
   }, []);
+
+  const seedMockData = async () => {
+    setSeeding(true);
+    toast.info("Adding 20 full-time mock jobs to database...");
+    const token = localStorage.getItem("jwt_token");
+    let count = 0;
+    for (const job of MOCK_FULL_TIME_JOBS) {
+      try {
+        const res = await fetch("https://careercompassai1.onrender.com/api/jobs", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(job)
+        });
+        if (res.ok) count++;
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    toast.success(`Successfully seeded ${count} mock jobs!`);
+    setSeeding(false);
+    fetchJobs();
+  };
 
   const handleCreateJob = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -160,6 +187,15 @@ function AdminJobs() {
           <p className="text-sm text-muted-foreground mt-1">Approve listings, monitor expired jobs, and track performance.</p>
         </div>
         <div className="flex items-center gap-3">
+          <Button 
+            variant="outline" 
+            onClick={seedMockData} 
+            disabled={seeding}
+            className="border-primary/30 text-primary hover:bg-primary/10 h-10 px-4 font-bold gap-2"
+          >
+            {seeding ? <Loader2 className="w-4 h-4 animate-spin" /> : <Database className="w-4 h-4" />}
+            {seeding ? "Seeding..." : "Seed Mock Jobs (20)"}
+          </Button>
           <Button onClick={() => setIsCreating(true)} className="gradient-bg text-white border-0 shadow-glow h-10 px-6 font-bold hover:opacity-90 gap-2">
             <Plus className="w-4 h-4" /> Create Job Post
           </Button>

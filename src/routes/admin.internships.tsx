@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Search, Filter, GraduationCap, Plus, Loader2, Calendar, MapPin, Building2, X, Trash2 } from "lucide-react";
+import { Search, Filter, GraduationCap, Plus, Loader2, Calendar, MapPin, Building2, X, Trash2, Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { MOCK_INTERNSHIPS } from "@/lib/mockJobsData";
 
 export const Route = createFileRoute("/admin/internships")({
   component: AdminInternships,
@@ -14,6 +15,7 @@ function AdminInternships() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [seeding, setSeeding] = useState(false);
 
   // Form state
   const [title, setTitle] = useState("");
@@ -41,6 +43,31 @@ function AdminInternships() {
   useEffect(() => {
     fetchInternships();
   }, []);
+
+  const seedMockInternships = async () => {
+    setSeeding(true);
+    toast.info("Adding 20 mock internships to database...");
+    const token = localStorage.getItem("jwt_token");
+    let count = 0;
+    for (const job of MOCK_INTERNSHIPS) {
+      try {
+        const res = await fetch("https://careercompassai1.onrender.com/api/jobs", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(job)
+        });
+        if (res.ok) count++;
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    toast.success(`Successfully seeded ${count} mock internships!`);
+    setSeeding(false);
+    fetchInternships();
+  };
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,6 +134,15 @@ function AdminInternships() {
           <p className="text-sm text-muted-foreground mt-1">Post new internship openings and monitor candidate interest.</p>
         </div>
         <div className="flex items-center gap-3">
+          <Button 
+            variant="outline" 
+            onClick={seedMockInternships} 
+            disabled={seeding}
+            className="border-primary/30 text-primary hover:bg-primary/10 h-10 px-4 font-bold gap-2"
+          >
+            {seeding ? <Loader2 className="w-4 h-4 animate-spin" /> : <Database className="w-4 h-4" />}
+            {seeding ? "Seeding..." : "Seed Mock Internships (20)"}
+          </Button>
           <Button onClick={() => setShowModal(true)} className="gradient-bg text-white border-0 shadow-glow h-10 px-6 font-bold hover:opacity-90 flex items-center gap-2">
             <Plus className="w-4 h-4" /> Create Internship
           </Button>
